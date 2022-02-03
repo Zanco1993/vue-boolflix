@@ -1,9 +1,9 @@
 <template>
-  <div @mouseover="active" class="content-card">
+  <div @mouseover="active" @mouseleave="!active" class="content-card">
     <div v-if="!show">
       <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
     </div>
-    <div v-else class="content-card">
+    <div v-else>
       <p>
         {{ info.title }}
       </p>
