@@ -1,5 +1,5 @@
 <template>
-  <div class="content-card">
+  <div @mouseover='active' class="content-card">
       <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="">
   </div>
 
