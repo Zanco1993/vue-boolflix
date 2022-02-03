@@ -14,7 +14,7 @@
       </p>
       <p>
         <strong>Lingua: </strong>
-        <img :src="flag" alt="">
+        <!-- <img :src="" alt="" /> -->
       </p>
       <p>
         <strong>Voto: </strong>
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       active: false,
-      language:['it', 'en', 'ja']
+      language: ["it", "en", "ja"],
     };
   },
   props: {
@@ -46,10 +46,14 @@ export default {
     },
 
     // flag() {
-    //     if(this.language.includes(this.info.original_language)) {
-    //         return `@/assets/${this.info.original_language}.png`
+    //   this.language.forEach(element => {
+    //     if(element.includes(this.info.original_language)) {
+    //       return `../assets/en.png`;
+
     //     }
-    // }
+    //   });
+
+    // },
   },
 };
 </script>
@@ -62,14 +66,13 @@ export default {
   display: flex;
   flex-wrap: wrap;
 
-
   &:hover {
     background-color: black;
     color: white;
     padding: 40px 10px;
     overflow: auto;
     p {
-        font-size: 16px;
+      font-size: 16px;
     }
     span {
       color: #7f7f7f;
