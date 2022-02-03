@@ -1,26 +1,46 @@
 <template>
-  <div @mouseover='active' class="content-card">
-      <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="">
+  <div @mouseover="active" class="content-card">
+    <div v-if="!show">
+      <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
+    </div>
+    <div v-else class="content-card">
+      <p>
+        {{ info.title }}
+      </p>
+    </div>
   </div>
-
 </template>
 
 <script>
 export default {
-props: {
-    info: Object
-},
+  data() {
+    return {
+      show: false,
+    };
+  },
+  props: {
+    info: Object,
+  },
+
+  methods: {
+    active() {
+      this.show = !this.show;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .content-card {
-    width: calc(100% / 4 - 30px);
-    margin: 10px 15px;
+  width: calc(100% / 4 - 30px);
+  margin: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
 
-    img{
-        width: 100%;
-    }
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 </style>
 
