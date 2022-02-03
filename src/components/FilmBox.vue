@@ -1,6 +1,6 @@
 <template>
   <div class="content-card">
-      {{info.title}}
+      <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="">
   </div>
 
 </template>
@@ -15,9 +15,12 @@ props: {
 
 <style lang="scss" scoped>
 .content-card {
-    width: 300px;
-    height: 400px;
-    border: 1px solid black;
+    width: calc(100% / 4 - 30px);
+    margin: 10px 15px;
+
+    img{
+        width: 100%;
+    }
 }
 </style>
 

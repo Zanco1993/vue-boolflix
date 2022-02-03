@@ -1,8 +1,8 @@
 <template>
   <div class="main-container">
     <film-box 
-    v-for="(film, index) in films"
-    :key="index"
+    v-for="film in films"
+    :key="film.id"
     :info="film"
     />
     
@@ -24,7 +24,10 @@ export default {
 
 <style lang="scss" scoped>
 .main-container {
-  padding: 40px;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 </style>
 
