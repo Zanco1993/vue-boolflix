@@ -1,11 +1,24 @@
 <template>
-  <div @mouseenter="active" @mouseleave="active" class="content-card">
-    <div v-show="!show">
+  <div @mouseenter="over" @mouseleave="over" class="content-card">
+    <div v-show="!active">
       <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
     </div>
-    <div v-show="show">
+    <div v-show="active">
       <p>
-        {{ info.title }}
+        <strong>Titolo: </strong>
+        <span>{{ info.title }}</span>
+      </p>
+      <p>
+        <strong>Originale: </strong>
+        <span>{{ info.original_title }}</span>
+      </p>
+      <p>
+        <strong>Voto: </strong>
+        <span>{{ info.vote_average }}</span>
+      </p>
+      <p>
+        <strong>Overview: </strong>
+        <span>{{ info.overview }}</span>
       </p>
     </div>
   </div>
@@ -15,7 +28,7 @@
 export default {
   data() {
     return {
-      show: false,
+      active: false,
     };
   },
   props: {
@@ -23,8 +36,8 @@ export default {
   },
 
   methods: {
-    active() {
-      this.show = !this.show;
+    over() {
+      this.active = !this.active;
     },
   },
 };
@@ -33,33 +46,27 @@ export default {
 <style lang="scss" scoped>
 .content-card {
   width: calc(100% / 4 - 30px);
-  margin: 10px 15px;
+  margin: 5px 15px;
   display: flex;
   flex-wrap: wrap;
 
+  &:hover {
+    background-color: black;
+    color: white;
+    padding: 40px 10px;
+
+    p {
+      font-size: 16px;
+    }
+    span {
+      color: #7f7f7f;
+    }
+  }
+
   img {
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }
 </style>
-
-<!-- 
-In FilmBox, le informazioni compariranno se:
-@mouseover="show" 
-
-bisogna creare un methods 
-data() {
-    return {
-        active: false
-    }
-}
-
-methods: {
-    show: function() {
-        this.active = !this.active
-    }
-}
-
-TODO da implementare
- -->
