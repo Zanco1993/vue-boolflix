@@ -1,17 +1,24 @@
 <template>
-  <div class="">
-  
+  <div class="content-card">
+      {{info.title}}
   </div>
 
 </template>
 
 <script>
 export default {
-
+props: {
+    info: Object
+},
 };
 </script>
 
 <style lang="scss" scoped>
+.content-card {
+    width: 300px;
+    height: 400px;
+    border: 1px solid black;
+}
 </style>
 
 <!-- 

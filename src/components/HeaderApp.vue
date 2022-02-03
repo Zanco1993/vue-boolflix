@@ -4,7 +4,7 @@
 
     <div class="content-filter">
       <input type="text" v-model="input" />
-      <button>Cerca</button>
+      <button @click="$emit('search', input)">Cerca</button>
     </div>
   </div>
 </template>
