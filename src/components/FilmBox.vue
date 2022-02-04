@@ -18,14 +18,14 @@
 
         <!-- Non funziona -->
 
-        <!-- <img class="flag"
+        <img class="flag"
           v-if="language.includes(info.original_language)"
-          :src="`../assets/${info.original_language}.png`"
+          :src="`../flag/${info.original_language}.png`"
           alt=""
         />
         <div v-else>
           {{ info.original_language }}
-        </div> -->
+        </div>
 
         <!-- da rendere dinamica todo -->
         <!-- <img src="@/assets/en.png" alt=""> -->
