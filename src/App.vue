@@ -1,36 +1,54 @@
 <template>
   <div id="app">
-    <header-app @search="filterFilm"/>
-    <main-container :films="films" />
+    <header-app @searchSeries="filterSeries" @searchMovies="filterMovies" />
+    <main-container :films="filteredList" />
   </div>
 </template>
 
 <script>
 import HeaderApp from "./components/HeaderApp.vue";
-import MainContainer from "./components/MainContainer.vue"
-import axios from 'axios'
+import MainContainer from "./components/MainContainer.vue";
+import axios from "axios";
 
 export default {
   name: "App",
   data() {
     return {
-      films: []
-    }
+      listMovies: [],
+      listSeriesTv: [],
+      filteredList: []
+    };
   },
 
   components: {
     HeaderApp,
-    MainContainer
+    MainContainer,
   },
 
   methods: {
-    filterFilm(input) {
-      axios.get(`https://api.themoviedb.org/3/search/movie?query=${input}&api_key=0b9833208903abf98afe96ce83981542`).then((element) => {
-        this.films = element.data.results
-      })
-    }
-  }
-
+    filterMovies(inputMovies) {
+      console.log('prova')
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/movie?query=${inputMovies}&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((element) => {
+          this.listMovies = element.data.results;
+          this.filteredList = this.listMovies
+        });
+    },
+    filterSeries(inputSeries) {
+      console.log('prova')
+      axios
+        .get(
+          `https://api.themoviedb.org/3/search/tv?query=${inputSeries}&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((element) => {
+          this.listSeriesTv = element.data.results;
+          this.filteredList = this.listSeriesTv
+        });
+    },
+  },
 };
 </script>
 

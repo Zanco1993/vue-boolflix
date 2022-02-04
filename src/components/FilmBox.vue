@@ -4,26 +4,38 @@
       <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
     </div>
     <div v-show="active">
-      <p>
+      <div>
         <strong>Titolo: </strong>
         <span>{{ info.title }}</span>
-      </p>
-      <p>
+      </div>
+      <div>
         <strong>Titolo Originale: </strong>
         <span>{{ info.original_title }}</span>
-      </p>
-      <p>
+      </div>
+
+      <div>
         <strong>Lingua: </strong>
-        <!-- <img :src="" alt="" /> -->
-      </p>
-      <p>
+        <!-- <img
+          v-if="language.includes(info.original_language)"
+          :src="`@/assets/${info.original_language}.jpg`"
+          alt=""
+        />
+        <div v-else>
+          {{ info.original_language }}
+        </div> -->
+
+        <!-- da rendere dinamica todo -->
+        <img src="@/assets/en.png" alt="">
+      </div>
+
+      <div>
         <strong>Voto: </strong>
         <span>{{ info.vote_average }}</span>
-      </p>
-      <p>
+      </div>
+      <div>
         <strong>Overview: </strong>
         <span>{{ info.overview }}</span>
-      </p>
+      </div>
     </div>
   </div>
 </template>
@@ -46,12 +58,14 @@ export default {
     },
 
     // flag() {
-    //   this.language.forEach(element => {
+    //   this.language.forEach((element) => {
     //     if(element.includes(this.info.original_language)) {
-    //       return `../assets/en.png`;
-
+    //       this.searchLang.push(this.info.original_language)
+    //     } else {
+    //       return this.info.original_language
     //     }
     //   });
+    //   return `@/flag/${this.searchLang}.png`;
 
     // },
   },

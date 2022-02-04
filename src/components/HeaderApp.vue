@@ -3,8 +3,24 @@
     <h1>BOOLFLIX</h1>
 
     <div class="content-filter">
-      <input type="text" @keyup.enter="$emit('search', input)" v-model="input" />
-      <button @click="$emit('search', input)">Cerca</button>
+      <div class="input-movies">
+        <input
+          type="text"
+          @keyup.enter="resetMoviesSearch(inputMovies)"
+          v-model="inputMovies"
+          placeholder="Digita Film"
+        />
+        <button @click="resetMoviesSearch(inputMovies)">Cerca Film</button>
+      </div>
+      <div>
+        <input
+          type="text"
+          @keyup.enter="resetSeriesSearch(inputSeries)"
+          v-model="inputSeries"
+          placeholder="Digita Serie"
+        />
+        <button @click="resetSeriesSearch(inputSeries)">Cerca Serie TV</button>
+      </div>
     </div>
   </div>
 </template>
@@ -13,9 +29,22 @@
 export default {
   data() {
     return {
-      input: "",
+      inputMovies: "",
+      inputSeries: ""
     };
   },
+
+  methods: {
+    resetMoviesSearch(inputMovies) {
+      this.inputMovies = ''
+      this.$emit('searchMovies', inputMovies)
+    },
+
+    resetSeriesSearch(inputSeries) {
+      this.inputSeries = ''
+      this.$emit('searchSeries', inputSeries)
+    }
+  }
 };
 </script>
 
