@@ -34,11 +34,17 @@
 
       <p>
         <strong>Voto: </strong>
-        <span v-if="info.vote_avarage === 0 || info.vote_avarage === ''">
+        <!-- <span v-if="info.vote_avarage === 0 || info.vote_avarage === ''">
           Non trovato
-        </span>
-        <span v-else v-for="(star, index) in 5" :key="index">
-          
+        </span> -->
+
+  <!-- TODO -->
+
+        <span
+          v-for="(star, index) in countStars"
+          :key="index"
+        >
+          <i class="fas fa-star"></i>
         </span>
       </p>
 
@@ -67,6 +73,10 @@ export default {
       this.active = !this.active;
     },
 
+    countStars() {
+      return Math.round(this.info.vote_avarage / 2)
+      
+    }
   },
 };
 </script>
