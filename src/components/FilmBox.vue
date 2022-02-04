@@ -1,7 +1,10 @@
 <template>
   <div @mouseenter="over" @mouseleave="over" class="content-card">
     <div v-show="!active">
-      <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
+      <img v-if="info.poster_path" :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
+      <div v-else>
+        <img class="image-not-found" src="@/assets/not_image.png" alt="">
+      </div>
     </div>
     <div v-show="active">
       <p>
@@ -77,6 +80,12 @@ export default {
   margin: 5px 15px;
   display: flex;
   flex-wrap: wrap;
+
+  .image-not-found {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 
   &:hover {
     background-color: black;
