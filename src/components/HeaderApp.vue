@@ -4,6 +4,9 @@
 
     <div class="content-filter">
       <div class="input-movies">
+
+        <!-- prova reset campo input dopo aver cercato -->
+        
         <input
           type="text"
           @keyup.enter="resetMoviesSearch(inputMovies)"

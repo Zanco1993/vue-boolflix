@@ -33,6 +33,7 @@ export default {
           `https://api.themoviedb.org/3/search/movie?query=${inputMovies}&api_key=0b9833208903abf98afe96ce83981542`
         )
         .then((element) => {
+          this.listSeriesTv = ''
           this.listMovies = element.data.results;
           this.filteredList = this.listMovies
         });
@@ -44,6 +45,7 @@ export default {
           `https://api.themoviedb.org/3/search/tv?query=${inputSeries}&api_key=0b9833208903abf98afe96ce83981542`
         )
         .then((element) => {
+          this.listMovies = ''
           this.listSeriesTv = element.data.results;
           this.filteredList = this.listSeriesTv
         });

@@ -4,20 +4,23 @@
       <img :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
     </div>
     <div v-show="active">
-      <div>
+      <p>
         <strong>Titolo: </strong>
         <span>{{ info.title }}</span>
-      </div>
-      <div>
+      </p>
+      <p>
         <strong>Titolo Originale: </strong>
         <span>{{ info.original_title }}</span>
-      </div>
+      </p>
 
       <div>
         <strong>Lingua: </strong>
-        <!-- <img
+
+        <!-- Non funziona -->
+
+        <!-- <img class="flag"
           v-if="language.includes(info.original_language)"
-          :src="`@/assets/${info.original_language}.jpg`"
+          :src="`../assets/${info.original_language}.png`"
           alt=""
         />
         <div v-else>
@@ -25,17 +28,17 @@
         </div> -->
 
         <!-- da rendere dinamica todo -->
-        <img src="@/assets/en.png" alt="">
+        <!-- <img src="@/assets/en.png" alt=""> -->
       </div>
 
-      <div>
+      <p>
         <strong>Voto: </strong>
         <span>{{ info.vote_average }}</span>
-      </div>
-      <div>
+      </p>
+      <p>
         <strong>Overview: </strong>
         <span>{{ info.overview }}</span>
-      </div>
+      </p>
     </div>
   </div>
 </template>
@@ -57,17 +60,6 @@ export default {
       this.active = !this.active;
     },
 
-    // flag() {
-    //   this.language.forEach((element) => {
-    //     if(element.includes(this.info.original_language)) {
-    //       this.searchLang.push(this.info.original_language)
-    //     } else {
-    //       return this.info.original_language
-    //     }
-    //   });
-    //   return `@/flag/${this.searchLang}.png`;
-
-    // },
   },
 };
 </script>
@@ -97,6 +89,11 @@ export default {
     width: 100%;
     height: 400px;
     object-fit: cover;
+  }
+
+  .flag {
+    width: 30px;
+    height: 30px;
   }
 }
 </style>
