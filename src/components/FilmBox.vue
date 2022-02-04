@@ -30,11 +30,18 @@
         <!-- da rendere dinamica todo -->
         <!-- <img src="@/assets/en.png" alt=""> -->
       </div>
+      
 
       <p>
         <strong>Voto: </strong>
-        <span>{{ info.vote_average }}</span>
+        <span v-if="info.vote_avarage === 0 || info.vote_avarage === ''">
+          Non trovato
+        </span>
+        <i v-else class="fas fa-star"></i>
       </p>
+
+
+        <i class="fas fa-star"></i>
       <p>
         <strong>Overview: </strong>
         <span>{{ info.overview }}</span>
@@ -59,7 +66,6 @@ export default {
     over() {
       this.active = !this.active;
     },
-
   },
 };
 </script>
@@ -83,6 +89,10 @@ export default {
     span {
       color: #7f7f7f;
     }
+
+    .fa-star {
+      color: yellow;
+    }
   }
 
   img {
@@ -96,4 +106,5 @@ export default {
     height: 30px;
   }
 }
+
 </style>
