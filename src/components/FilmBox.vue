@@ -18,9 +18,10 @@
 
         <!-- Non funziona -->
 
-        <img class="flag"
+        <img
+          class="flag"
           v-if="language.includes(info.original_language)"
-          :src="`../flag/${info.original_language}.png`"
+          :src="`/flag/${info.original_language}.png`"
           alt=""
         />
         <div v-else>
@@ -30,18 +31,17 @@
         <!-- da rendere dinamica todo -->
         <!-- <img src="@/assets/en.png" alt=""> -->
       </div>
-      
 
       <p>
         <strong>Voto: </strong>
         <span v-if="info.vote_avarage === 0 || info.vote_avarage === ''">
           Non trovato
         </span>
-        <i v-else class="fas fa-star"></i>
+        <span v-else v-for="(star, index) in 5" :key="index">
+          
+        </span>
       </p>
 
-
-        <i class="fas fa-star"></i>
       <p>
         <strong>Overview: </strong>
         <span>{{ info.overview }}</span>
@@ -66,6 +66,7 @@ export default {
     over() {
       this.active = !this.active;
     },
+
   },
 };
 </script>
@@ -106,5 +107,4 @@ export default {
     height: 30px;
   }
 }
-
 </style>
