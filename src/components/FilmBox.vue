@@ -1,9 +1,13 @@
 <template>
   <div @mouseenter="over" @mouseleave="over" class="content-card">
     <div v-show="!active">
-      <img v-if="info.poster_path" :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`" alt="" />
+      <img
+        v-if="info.poster_path"
+        :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`"
+        alt=""
+      />
       <div v-else>
-        <img class="image-not-found" src="@/assets/not_image.png" alt="">
+        <img class="image-not-found" src="@/assets/not_image.png" alt="" />
       </div>
     </div>
     <div v-show="active">
@@ -33,7 +37,7 @@
       <p>
         <strong>Voto: </strong>
         <span v-if="info.vote_average === 0 || info.vote_average === ''">
-          Non trovato
+          Not found
         </span>
 
         <span v-else v-for="star in countStars()" :key="star">
@@ -43,7 +47,12 @@
 
       <p>
         <strong>Overview: </strong>
-        <span>{{ info.overview }}</span>
+        <span v-if="info.overview === ''"> 
+          Not found
+        </span>
+        <span v-else>
+          {{ info.overview }}
+        </span>
       </p>
     </div>
   </div>
