@@ -4,9 +4,6 @@
 
     <div class="content-filter">
       <div class="input-movies">
-
-        <!-- prova reset campo input dopo aver cercato -->
-        
         <input
           type="text"
           @keyup.enter="resetMoviesSearch(inputMovies)"
@@ -33,21 +30,29 @@ export default {
   data() {
     return {
       inputMovies: "",
-      inputSeries: ""
+      inputSeries: "",
     };
   },
 
   methods: {
     resetMoviesSearch(inputMovies) {
-      this.inputMovies = ''
-      this.$emit('searchMovies', inputMovies)
+      // se si vuole mantenere l'informazione della ricerca
+      // basta commentare this.inputMovies
+
+      // this.inputMovies = "";
+      this.inputSeries = "";
+      this.$emit("searchMovies", inputMovies);
     },
 
     resetSeriesSearch(inputSeries) {
-      this.inputSeries = ''
-      this.$emit('searchSeries', inputSeries)
-    }
-  }
+      // se si vuole mantenere l'informazione della ricerca
+      // basta commentare this.inputSeries
+
+      // this.inputSeries = "";
+      this.inputMovies = "";
+      this.$emit("searchSeries", inputSeries);
+    },
+  },
 };
 </script>
 

@@ -1,11 +1,6 @@
 <template>
   <div class="main-container">
-    <film-box 
-    v-for="film in films"
-    :key="film.id"
-    :info="film"
-    />
-    
+    <film-box v-for="film in films" :key="film.id" :info="film" />
   </div>
 </template>
 
@@ -24,11 +19,11 @@ export default {
 
 <style lang="scss" scoped>
 .main-container {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 30px;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 30px;
 }
 </style>
 

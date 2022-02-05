@@ -40,16 +40,16 @@
           Not found
         </span>
 
-        <span v-else v-for="star in countStars()" :key="star">
-          <i class="fas fa-star"></i>
+        <!-- gestione valutazione con stelline -->
+        <span v-else v-for="star in 5" :key="star">
+          <i v-if="star <= countStars()" class="fas fa-star"></i>
+          <i v-else class="far fa-star"></i>
         </span>
       </p>
 
       <p>
         <strong>Overview: </strong>
-        <span v-if="info.overview === ''"> 
-          Not found
-        </span>
+        <span v-if="info.overview === ''"> Not found </span>
         <span v-else>
           {{ info.overview }}
         </span>
@@ -83,46 +83,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content-card {
-  width: calc(100% / 4 - 30px);
-  height: 400px;
-  margin: 5px 15px;
-  display: flex;
-  flex-wrap: wrap;
-
-  .image-not-found {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  &:hover {
-    background-color: black;
-    color: white;
-    padding: 40px 10px;
-    overflow: auto;
-    p {
-      padding: 5px 0;
-      font-size: 16px;
-    }
-    span {
-      color: #7f7f7f;
-    }
-
-    .fa-star {
-      color: yellow;
-    }
-  }
-
-  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-  }
-
-  .flag {
-    width: 30px;
-    height: 20px;
-  }
-}
+@import "./style/filmBox.scss";
 </style>
