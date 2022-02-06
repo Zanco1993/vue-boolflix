@@ -2,8 +2,8 @@
   <div @mouseenter="over" @mouseleave="over" class="content-card">
     <div v-show="!active">
       <img
-        v-if="info.poster_path"
-        :src="`https://image.tmdb.org/t/p/w500${info.poster_path}`"
+        v-if="film.poster_path"
+        :src="`https://image.tmdb.org/t/p/w500${film.poster_path}`"
         alt=""
       />
       <div v-else>
@@ -13,36 +13,36 @@
     <div v-show="active">
       <p>
         <strong>Titolo: </strong>
-        <span v-if="info.title === '' || info.title === null">
+        <span v-if="film.title === '' || film.title === null">
           Not found
         </span>
-        <span v-else>{{ info.title }}</span>
+        <span v-else>{{ film.title }}</span>
       </p>
 
       <p>
         <strong>Titolo Originale: </strong>
-        <span v-if="info.original_title === ''">
+        <span v-if="film.original_title === ''">
           Not found
         </span>
-        <span v-else>{{ info.original_title }}</span>
+        <span v-else>{{ film.original_title }}</span>
       </p>
 
       <div>
         <strong>Lingua: </strong>
         <img
           class="flag"
-          v-if="language.includes(info.original_language)"
-          :src="`/flag/${info.original_language}.png`"
+          v-if="language.includes(film.original_language)"
+          :src="`/flag/${film.original_language}.png`"
           alt=""
         />
         <span v-else>
-          {{ info.original_language }}
+          {{ film.original_language }}
         </span>
       </div>
 
       <p>
         <strong>Voto: </strong>
-        <span v-if="info.vote_average === 0 || info.vote_average === ''">
+        <span v-if="film.vote_average === 0 || film.vote_average === ''">
           Not found
         </span>
 
@@ -55,9 +55,9 @@
 
       <p>
         <strong>Overview: </strong>
-        <span v-if="info.overview === ''"> Not found </span>
+        <span v-if="film.overview === ''"> Not found </span>
         <span v-else>
-          {{ info.overview }}
+          {{ film.overview }}
         </span>
       </p>
     </div>
@@ -73,7 +73,7 @@ export default {
     };
   },
   props: {
-    info: Object,
+    film: Object,
   },
 
   methods: {
@@ -82,7 +82,7 @@ export default {
     },
 
     countStars() {
-      return Math.round(this.info.vote_average / 2);
+      return Math.round(this.film.vote_average / 2);
     },
   },
 };

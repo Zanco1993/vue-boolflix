@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <div v-show="films !== ''" class="content">
-      <film-box v-for="film in films" :key="film.id" :info="film" />
+      <film-box v-for="film in films" :key="film.id" :film="film" />
     </div>
     <div v-show="series !== ''" class="content">
       <serie-box v-for="serie in series" :key="serie.id" :serie="serie" />
