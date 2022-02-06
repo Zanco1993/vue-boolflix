@@ -76,7 +76,6 @@ export default {
       }
     },
 
-    // film ora avviabili
     homeFilter() {
       console.log("prova");
       axios

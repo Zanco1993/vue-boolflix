@@ -3,9 +3,9 @@
     <div class="navbar">
       <h1>BOOLFLIX</h1>
       <ul>
-        <li @click="$emit('homeFilter')">Home</li>
-        <li @click="$emit('topSeriesTV')">Serie TV</li>
-        <li @click="$emit('upComingFilm')">Film in arrivo</li>
+        <li @click="homeFilter(inputSeries, inputMovies)">Home</li>
+        <li @click="topSeriesTV(inputSeries, inputMovies)">Serie TV</li>
+        <li @click="upComingFilm(inputSeries, inputMovies)">Film in arrivo</li>
       </ul>
     </div>
 
@@ -59,6 +59,22 @@ export default {
       this.inputMovies = "";
       this.$emit("searchSeries", inputSeries);
     },
+    homeFilter(inputSeries, inputMovies) {
+      this.inputSeries = "";
+      this.inputMovies = "";
+      this.$emit("homeFilter", inputSeries, inputMovies);
+    },
+    topSeriesTV(inputSeries, inputMovies) {
+      this.inputSeries = "";
+      this.inputMovies = "";
+      this.$emit("topSeriesTV", inputSeries, inputMovies);
+    },
+    upComingFilm(inputSeries, inputMovies) {
+      this.inputSeries = "";
+      this.inputMovies = "";
+      this.$emit("upComingFilm", inputSeries, inputMovies);
+    },
+ 
   },
 };
 </script>
