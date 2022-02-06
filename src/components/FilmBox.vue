@@ -10,20 +10,18 @@
         <img class="image-not-found" src="@/assets/not_image.png" alt="" />
       </div>
     </div>
+
+    <!-- TODO CLASS OVERLAY -->
     <div v-show="active">
       <p>
         <strong>Titolo: </strong>
-        <span v-if="film.title === '' || film.title === null">
-          Not found
-        </span>
+        <span v-if="film.title === '' || film.title === null"> Not found </span>
         <span v-else>{{ film.title }}</span>
       </p>
 
       <p>
         <strong>Titolo Originale: </strong>
-        <span v-if="film.original_title === ''">
-          Not found
-        </span>
+        <span v-if="film.original_title === ''"> Not found </span>
         <span v-else>{{ film.original_title }}</span>
       </p>
 

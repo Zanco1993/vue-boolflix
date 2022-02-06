@@ -8,7 +8,7 @@
     background-color: #000;
 
     .navbar {
-        color: white;
+        color: #979797;
         display: flex;
         h1 {
             color: red;
@@ -20,12 +20,12 @@
             align-items: center;
             li {
                 margin-left: 20px;
-                font-size: 20px;
+                font-size: 25px;
                 transition: all 0.3s;
                 cursor: pointer;
 
                 &:hover {
-                    color: red;
+                    color: white;
                 }
             }
         }
