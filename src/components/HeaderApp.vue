@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <h1>BOOLFLIX</h1>
+    <div class="navbar">
+      <h1>BOOLFLIX</h1>
+      <ul>
+        <li @click="$emit('homeFilter')">Home</li>
+        <li @click="$emit('topSeriesTV')">Serie TV</li>
+        <li @click="$emit('upComingFilm')">Film in arrivo</li>
+      </ul>
+    </div>
 
     <div class="content-filter">
       <div class="input-movies">
@@ -8,7 +15,7 @@
           type="text"
           @keyup.enter="resetMoviesSearch(inputMovies)"
           v-model="inputMovies"
-          placeholder="Digita Film"
+          placeholder="Cerca Film"
         />
         <button @click="resetMoviesSearch(inputMovies)">Cerca Film</button>
       </div>
@@ -17,7 +24,7 @@
           type="text"
           @keyup.enter="resetSeriesSearch(inputSeries)"
           v-model="inputSeries"
-          placeholder="Digita Serie"
+          placeholder="Cerca Serie"
         />
         <button @click="resetSeriesSearch(inputSeries)">Cerca Serie TV</button>
       </div>

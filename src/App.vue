@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <header-app @searchSeries="filterSeries" @searchMovies="filterMovies" />
-    <main-container :films="filteredListMovies" :series="filteredListSeries"/>
+    <header-app
+      @searchSeries="filterSeries"
+      @searchMovies="filterMovies"
+      @homeFilter="homeFilter"
+      @topSeriesTV="topSeriesFilter"
+      @upComingFilm="upComingFilmFilter"
+    />
+    <main-container :films="filteredListMovies" :series="filteredListSeries" />
   </div>
 </template>
 
@@ -18,7 +24,10 @@ export default {
       listMovies: [],
       listSeries: [],
       filteredListMovies: [],
-      filteredListSeries: []
+      filteredListSeries: [],
+      listPopularMovies: [],
+      topSeries: [],
+      topFilm: [],
     };
   },
   mounted() {
@@ -66,11 +75,58 @@ export default {
           });
       }
     },
+
+    // film ora avviabili
+    homeFilter() {
+      console.log("prova");
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/now_playing?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((element) => {
+          
+          this.filteredListMovies = [];
+          this.filteredListSeries = [];
+          this.listPopularMovies = element.data.results;
+          this.filteredListMovies = this.listPopularMovies;
+        });
+    },
+    topSeriesFilter() {
+      console.log("prova");
+      axios
+        .get(
+          `https://api.themoviedb.org/3/discover/tv??&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((element) => {
+          this.filteredListMovies = [];
+          this.filteredListSeries = [];
+
+          this.topSeries = element.data.results;
+          this.filteredListSeries = this.topSeries;
+        });
+    },
+    upComingFilmFilter() {
+      console.log("prova");
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/upcoming?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((element) => {
+          this.filteredListMovies = [];
+          this.filteredListSeries = [];
+
+          this.topFilm = element.data.results;
+          this.filteredListMovies = this.topFilm;
+        });
+    },
   },
 };
+
 </script>
 
 <style lang="scss">
 @import "./style/main.scss";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 </style>
+
+
