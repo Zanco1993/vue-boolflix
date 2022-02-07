@@ -46,8 +46,8 @@
 
         <!-- gestione valutazione con stelline -->
         <span v-else v-for="star in 5" :key="star">
-          <i v-if="star <= countStars()" class="fas fa-star"></i>
-          <i v-else class="far fa-star"></i>
+          <i v-if="star <= countStars()" class="fas fa-star gold"></i>
+          <i v-else class="fas fa-star"></i>
         </span>
       </p>
 
