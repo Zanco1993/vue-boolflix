@@ -48,7 +48,6 @@ export default {
 
   methods: {
     filterMovies(inputMovies) {
-      console.log("prova");
       if (inputMovies !== "") {
         axios
           .get(
@@ -62,7 +61,6 @@ export default {
       }
     },
     filterSeries(inputSeries) {
-      console.log("prova");
       if (inputSeries !== "") {
         axios
           .get(
@@ -77,13 +75,11 @@ export default {
     },
 
     homeFilter() {
-      console.log("prova");
       axios
         .get(
           `https://api.themoviedb.org/3/movie/now_playing?&api_key=0b9833208903abf98afe96ce83981542`
         )
         .then((element) => {
-          
           this.filteredListMovies = [];
           this.filteredListSeries = [];
           this.listPopularMovies = element.data.results;
@@ -91,7 +87,6 @@ export default {
         });
     },
     topSeriesFilter() {
-      console.log("prova");
       axios
         .get(
           `https://api.themoviedb.org/3/discover/tv?&api_key=0b9833208903abf98afe96ce83981542`
@@ -105,7 +100,6 @@ export default {
         });
     },
     upComingFilmFilter() {
-      console.log("prova");
       axios
         .get(
           `https://api.themoviedb.org/3/movie/upcoming?&api_key=0b9833208903abf98afe96ce83981542`
@@ -120,7 +114,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <style lang="scss">

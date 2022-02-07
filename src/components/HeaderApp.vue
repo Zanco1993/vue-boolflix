@@ -74,7 +74,6 @@ export default {
       this.inputMovies = "";
       this.$emit("upComingFilm", inputSeries, inputMovies);
     },
- 
   },
 };
 </script>
