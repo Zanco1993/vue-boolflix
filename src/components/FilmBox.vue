@@ -59,15 +59,21 @@
       </p>
 
       <div>
-        <p>
-          <strong @click="getGenres(film)">Genere: </strong>
-          <span v-show="showGenres" v-for="(genre, index) in listGenres" :key="index"
-            >{{ genre.name }}
-          </span>
+        <p class="more-info" @click="getInfo(film)">Maggiori info </p>
+        <p v-show="showGenres">
+          <strong>Genere: </strong>
+          <ul>
+            <li
+            v-show="showGenres"
+            v-for="(genre, index) in listGenres"
+            :key="index">
+            {{ genre.name }}
+            </li>
+          </ul>
         </p>
 
-        <p>
-          <strong @click="getCast(film)">Cast: </strong>
+        <p v-show="showGenres">
+          <strong>Cast: </strong>
           <span v-for="(cast, index) in listCast" :key="index">
             <ul>
               <li v-if="index < 5">{{ cast.name }}</li>
@@ -104,7 +110,7 @@ export default {
       return Math.round(this.film.vote_average / 2);
     },
 
-    getGenres(film) {
+    getInfo(film) {
       axios
         .get(
           `https://api.themoviedb.org/3/movie/${film.id}?&api_key=0b9833208903abf98afe96ce83981542`
@@ -112,9 +118,6 @@ export default {
         .then((res) => {
           this.listGenres = res.data.genres;
         });
-      this.showGenres = !this.showGenres
-    },
-    getCast(film) {
       axios
         .get(
           `https://api.themoviedb.org/3/movie/${film.id}/credits?&api_key=0b9833208903abf98afe96ce83981542`
@@ -122,6 +125,8 @@ export default {
         .then((res) => {
           this.listCast = res.data.cast;
         });
+      // fai comparire o meno le informazioni richieste
+      this.showGenres = !this.showGenres;
     },
   },
 };

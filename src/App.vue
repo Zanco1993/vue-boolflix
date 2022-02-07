@@ -94,7 +94,7 @@ export default {
       console.log("prova");
       axios
         .get(
-          `https://api.themoviedb.org/3/discover/tv??&api_key=0b9833208903abf98afe96ce83981542`
+          `https://api.themoviedb.org/3/discover/tv?&api_key=0b9833208903abf98afe96ce83981542`
         )
         .then((element) => {
           this.filteredListMovies = [];

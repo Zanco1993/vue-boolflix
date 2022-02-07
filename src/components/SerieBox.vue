@@ -40,7 +40,6 @@
           Not found
         </span>
 
-        <!-- gestione valutazione con stelline -->
         <span v-else v-for="star in 5" :key="star">
           <i v-if="star <= countStars()" class="fas fa-star"></i>
           <i v-else class="far fa-star"></i>
@@ -54,16 +53,67 @@
           {{ serie.overview }}
         </span>
       </p>
+
+       <div>
+        <p class="more-info" @click="getInfo(serie)">Maggiori info </p>
+        <p v-show="showGenres">
+          <strong>Genere: </strong>
+          <ul>
+            <li
+            v-show="showGenres"
+            v-for="(genre, index) in listGenres"
+            :key="index">
+            {{ genre.name }}
+            </li>
+          </ul>
+        </p>
+
+        <p v-show="showGenres">
+          <strong>Cast: </strong>
+          <span v-for="(cast, index) in listCast" :key="index">
+            <ul>
+              <li v-if="index < 5">{{ cast.name }}</li>
+            </ul>
+          </span>
+        </p>
+      {{listGenres}}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+// import axios from "axios";
+// export default {
+//   data() {
+//     return {
+//       active: false,
+//       language: ["it", "en", "ja"],
+//     };
+//   },
+//   props: {
+//     serie: Object,
+//   },
+
+//   methods: {
+//     over() {
+//       this.active = !this.active;
+//     },
+
+//     countStars() {
+//       return Math.round(this.serie.vote_average / 2);
+//     },
+//   },
+// };
+import axios from "axios";
 export default {
   data() {
     return {
       active: false,
+      showGenres: false,
       language: ["it", "en", "ja"],
+      listGenres: [],
+      listCast: [],
     };
   },
   props: {
@@ -77,6 +127,25 @@ export default {
 
     countStars() {
       return Math.round(this.serie.vote_average / 2);
+    },
+
+    getInfo(serie) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/discover/tv/${serie.id}?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((res) => {
+          this.listGenres = res.data.genres;
+        });
+      axios
+        .get(
+          `https://api.themoviedb.org/3/discover/tv/${serie.id}/credits?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((res) => {
+          this.listCast = res.data.cast;
+        });
+      // fai comparire o meno le informazioni richieste
+      this.showGenres = !this.showGenres;
     },
   },
 };
