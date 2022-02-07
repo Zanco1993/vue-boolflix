@@ -11,7 +11,6 @@
       </div>
     </div>
 
-    <!-- TODO CLASS OVERLAY -->
     <div v-show="active">
       <p>
         <strong>Titolo: </strong>
@@ -58,16 +57,24 @@
           {{ film.overview }}
         </span>
       </p>
+      <p>
+        <strong @click="getGenres(film)">genere: </strong>
+        <!-- TODO -->
+        <!-- <span>{{ listGenres.genres.name }}</span> -->
+      </p>
     </div>
+    {{listGenres}}
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       active: false,
       language: ["it", "en", "ja"],
+      listGenres: [],
     };
   },
   props: {
@@ -81,6 +88,16 @@ export default {
 
     countStars() {
       return Math.round(this.film.vote_average / 2);
+    },
+
+    getGenres(film) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${film.id}?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((res) => {
+          this.listGenres = res.data.genres;
+        });
     },
   },
 };
