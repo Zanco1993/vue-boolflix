@@ -60,10 +60,15 @@
       <p>
         <strong @click="getGenres(film)">genere: </strong>
         <!-- TODO -->
-        <!-- <span>{{ listGenres.genres.name }}</span> -->
+        <span v-for="(genre, index) in listGenres" :key="index"
+          >{{ genre.name }}
+        </span>
+        <strong @click="getCast(film)">cast: </strong>
+        <span v-for="(cast, index) in listcast" :key="index">
+          
+        </span>
       </p>
     </div>
-    {{listGenres}}
   </div>
 </template>
 
@@ -75,6 +80,7 @@ export default {
       active: false,
       language: ["it", "en", "ja"],
       listGenres: [],
+      listCast: [],
     };
   },
   props: {
@@ -97,6 +103,15 @@ export default {
         )
         .then((res) => {
           this.listGenres = res.data.genres;
+        });
+    },
+    getCast(film) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${film.id}/credits?&api_key=0b9833208903abf98afe96ce83981542`
+        )
+        .then((res) => {
+          this.cast = res.data.cast;
         });
     },
   },
